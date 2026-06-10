@@ -1,11 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        #headerSection {
+            background-color: rgb(53, 124, 89);
+            padding: 10px;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+
+        #contentSection {
+            display: flex;
+
+            #navSection {
+                display: flex;
+                flex-direction: column;
+                border-right: 2px solid black;
+                padding: 5px;
+                width: 260px;
+
+                #titleForThe-projectCardsContainer {
+                    font-size: small;
+                    font-weight: bold;
+                    margin-top: 10px;
+                }
+
+                #projectCardsContainer {
+                    height: 440px;
+                    gap: 5px;
+                    overflow: scroll;
+
+                    .projectCard {
+                        margin-top: 15px;
+                        border: 1px solid #8d8989;
+                        border-radius: 5px;
+                        padding: 10px 5px;
+                        justify-content: space-between;
+                        width: 100%;
+                        display: flex;
+                        gap: 8px;
+                        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+                        h3 {
+                            font-size: 16px;
+                        }
+
+                        .projectCardDeleteBtn {
+                            background-color: rgb(255, 146, 146);
+                            padding: 0px 8px;
+                            border-radius: 5px;
+                            border: 0.5px solid black;
+                        }
+
+                        .projectCardDeleteBtn:hover {
+                            background-color: rgb(255, 209, 209);
+                        }
+                    }
+
+                    .projectCard:hover {
+                        background-color: rgb(224, 212, 212);
+                    }
+                }
+
+                #projectsCreator {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+
+                    label {
+                        font-size: small;
+                        font-weight: bold;
+                    }
+
+                    input {
+                        border-radius: 4px;
+                        padding: 5px;
+                    }
+
+                    button {
+                        border-radius: 4px;
+                        padding: 7px;
+                        color: white;
+                        background-color: black;
+                        border: none;
+                    }
+
+                    button:hover {
+                        background-color: rgb(51, 51, 51);
+                    }
+                }
+            }
+
+            #mainContent {
+                padding: 10px;
+                height: 560px;
+                overflow: scroll;
+
+                .tasksCreatorFormHeading {
+                    font-size: 17px;
+                    font-weight: 550;
+                    padding: 10px 0px 10px 0px;
+                }
+
+                .tasksCreatorForm {
+                    background-color: #cbd3dd;
+                    display: flex;
+                    padding: 20px;
+                    gap: 5px;
+                    border-radius: 10px;
+                    flex-wrap: wrap;
+                    margin-bottom: 70px;
+
+                    .tasksCreatorForm_title {
+                        border-radius: 5px;
+                        border: 2px solid black;
+                        padding: 5px;
+                        width: 150px;
+                    }
+
+                    .tasksCreatorForm_description {
+                        border-radius: 5px;
+                        border: 2px solid black;
+                        width: 550px;
+                        padding: 15px 0px 0px 5px;
+
+                    }
+
+                    .tasksCreatorForm_dueDate {
+                        border-radius: 5px;
+                        border: 2px solid black;
+                        width: 220px;
+                        padding-left: 10px;
+                    }
+
+                    .tasksCreatorForm_priority {
+                        border-radius: 5px;
+                        border: 2px solid black;
+                        width: 100px;
+                    }
+
+                    .tasksCreatorForm_notes {
+                        border-radius: 5px;
+                        border: 2px solid black;
+                        padding: 15px 0px 0px 5px;
+                        width: 1045px
+                    }
+
+                    .tasksCreatorForm_submitButton {
+                        padding: 8px;
+                        border-radius: 10px;
+                        margin-left: auto;
+                        font-size: 15px;
+                        font-weight: 550;
+                        width: 150px;
+                        background-color: rgb(0, 0, 0);
+                        color: white;
+                        border: none;
+                    }
+
+                    .tasksCreatorForm_submitButton:hover {
+                        background-color: rgb(110, 110, 110);
+                    }
+                }
+
+                #taskCardsContainer {
+                    .taskCard {
+                        margin-top: 20px;
+                        border: 2px solid black;
+                        padding: 20px;
+                        display: flex;
+                        gap: 5px;
+                        flex-direction: column;
+                        border-radius: 10px;
+                        background-color: rgb(254, 255, 186);
+
+                        .upperPartOfTaskCard {
+                            display: flex;
+
+                            .taskCardTitle {
+                                font-size: 18px;
+                                font-weight: 600;
+                            }
+
+                            .ifTaskCardHasHighPriority {
+                                color: red;
+                                font-size: 18px;
+                                font-weight: 600;
+                                padding: 0px 3.8px 0px 6px;
+                            }
+
+                            .ifTaskCardHasMidPriority {
+                                color: rgb(61, 54, 165);
+                                font-size: 18px;
+                                font-weight: 600;
+                                padding: 0px 3.8px 0px 6px;
+                            }
+
+                            .ifTaskCardHasLowPriority {
+                                color: green;
+                                font-size: 18px;
+                                font-weight: 600;
+                                padding: 0px 3.8px 0px 6px;
+                            }
+
+                            .taskCardDueDate {
+                                font-size: 18px;
+                                font-weight: 600;
+                            }
+                        }
+
+                        .lowerPartOfTaskCard {
+                            display: flex;
+                            gap: 5px;
+
+                            .taskCard_CheckboxLabel {
+                                font-weight: 600;
+                                color: rgb(25, 109, 46);
+                            }
+
+                            .taskCard_isTaskCompletedCheckbox {
+                                margin-right: auto;
+                                height: 18px;
+                                width: 18px;
+                            }
+
+                            .taskCard_editViewBtn {
+                                padding: 7px;
+                                background-color: rgb(253, 168, 239);
+                                font-weight: 550;
+                                border-radius: 7px;
+                                font-size: 15px;
+                                border: 1px solid black;
+                            }
+
+                            .taskCard_editViewBtn:hover {
+                                background-color: rgb(223, 116, 205);
+                            }
+
+                            .taskCard_deleteBtn {
+                                padding: 7px;
+                                background-color: rgb(255, 131, 131);
+                                font-weight: 550;
+                                border-radius: 7px;
+                                font-size: 15px;
+                                border: 1px solid black;
+                            }
+
+                            .taskCard_deleteBtn:hover {
+                                background-color: rgb(243, 96, 96);
+                            }
+                        }
+
+                    }
+
+                    .taskCard_updateForm {
+                        background-color: rgb(254, 255, 186);
+                        display: flex;
+                        padding: 20px;
+                        gap: 5px;
+                        border-radius: 10px;
+                        flex-wrap: wrap;
+                        margin-bottom: 20px;
+                        margin-top: 20px;
+                        border: 2px solid black;
+
+                        .taskCard_updateForm_title {
+                            border-radius: 5px;
+                            border: 2px solid black;
+                            padding: 5px;
+                            width: 150px;
+                        }
+
+                        .taskCard_updateForm_description {
+                            border-radius: 5px;
+                            border: 2px solid black;
+                            width: 550px;
+                            padding: 15px 0px 0px 5px;
+
+                        }
+
+                        .taskCard_updateForm_dueDate {
+                            border-radius: 5px;
+                            border: 2px solid black;
+                            width: 220px;
+                            padding-left: 10px;
+                        }
+
+                        .taskCard_updateForm_priority {
+                            border-radius: 5px;
+                            border: 2px solid black;
+                            width: 100px;
+                        }
+
+                        .taskCard_updateForm_notes {
+                            border-radius: 5px;
+                            border: 2px solid black;
+                            padding: 15px 0px 0px 5px;
+                            width: 1045px
+                        }
+
+                        .taskCard_updateForm_saveBtn {
+                            padding: 8px;
+                            border-radius: 10px;
+                            margin-left: auto;
+                            font-size: 16px;
+                            font-weight: 550;
+                            width: 150px;
+                            background-color: rgb(111, 201, 89);
+                        }
+
+                        .taskCard_updateForm_saveBtn:hover {
+                            background-color: rgb(82, 165, 57);
+                        }
+                    }
+
+                }
+
+
+            }
+        }
+    </style>
 </head>
+
 <body>
-    
+    <section id="headerSection">My Todo List</section>
+
+    <div id="contentSection">
+        <section id="navSection">
+            <div id="titleForThe-projectCardsContainer">Projects</div>
+            <nav id="projectCardsContainer">
+
+            </nav>
+
+            <form id="projectsCreator">
+                <label for="projectName">Create Project</label>
+                <input id="projectName" type="text" maxlength="10" placeholder="New Project Name" required>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <main id="mainContent">
+
+        </main>
+    </div>
 </body>
+
 </html>
